@@ -18,5 +18,6 @@ export default WelcomeScreen;
 const styles = StyleSheet.create({
   main: {
     flex: 1,
+    backgroundColor: "red",
   },
 });

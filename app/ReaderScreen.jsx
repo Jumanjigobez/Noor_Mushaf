@@ -1,6 +1,6 @@
 import { Image, StyleSheet } from "react-native";
 import PagerView from "react-native-pager-view";
-import { pages } from "../../pages";
+import { pages } from "../pages";
 
 const ReaderScreen = () => {
   const pageNumbers = Object.keys(pages)
