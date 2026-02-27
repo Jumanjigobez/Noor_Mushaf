@@ -1,6 +1,6 @@
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
-import { useState } from "react";
+import { useNavigation, useRouter } from "expo-router";
+import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Image,
@@ -14,19 +14,28 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const WelcomeScreen = () => {
   const router = useRouter();
-
+  const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
 
   const handleStartReading = () => {
-    setLoading(true);
+    if (loading) return; // prevent multiple triggers 
 
-    const timer = setTimeout(() => {
-      router.push("/ReaderScreen");
-      setLoading(false);
-      clearTimeout(timer); // cleanup
-    }, 3100);
+    // setLoading(true);
+    // setTimeout(() => {
+    //   router.push("/ReaderScreen");
+    //   setLoading(false);
+    // }, 3100);
+
+    setLoading(true);
+    router.push("/ReaderScreen");
   };
 
+  // Listen for navigation focus to reset loading 
+  useEffect(() => {
+    const unsubscribe = navigation.addListener("focus", () => {
+      setLoading(false); // re‑enable button once ReaderScreen is active 
+    }); return unsubscribe;
+  }, [navigation]);
 
   return (
     <SafeAreaView style={styles.main}>

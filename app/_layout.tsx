@@ -24,6 +24,7 @@ export default function Layout() {
     <Stack initialRouteName="WelcomeScreen">
       <Stack.Screen name="WelcomeScreen" options={{ headerShown: false }} />
       <Stack.Screen name="ReaderScreen" options={{ title: "Noor Mushaf" }} />
+      <Stack.Screen name="LoadingScreen" options={{ title: "Preparing..." }} />
     </Stack>
   );
 }
