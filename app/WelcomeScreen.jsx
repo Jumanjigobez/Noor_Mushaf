@@ -1,5 +1,5 @@
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
-import { useFonts } from "expo-font";
+
 import { useRouter } from "expo-router";
 import {
   Image,
@@ -13,9 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const WelcomeScreen = () => {
   const router = useRouter();
-  const [fontsLoaded] = useFonts({
-    Amiri: require("../assets/fonts/Amiri-Regular.ttf"),
-  });
+
 
   return (
     <SafeAreaView style={styles.main}>
@@ -38,7 +36,7 @@ const WelcomeScreen = () => {
               name="book-outline"
               size={24}
               color="white"
-              // style={{ marginLeft: 50 }}
+            // style={{ marginLeft: 50 }}
             />
           </Text>
         </TouchableOpacity>
