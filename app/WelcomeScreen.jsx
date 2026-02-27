@@ -1,18 +1,31 @@
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
-
 import { useRouter } from "expo-router";
+import { useState } from "react";
 import {
+  ActivityIndicator,
   Image,
   Linking,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const WelcomeScreen = () => {
   const router = useRouter();
+
+  const [loading, setLoading] = useState(false);
+
+  const handleStartReading = () => {
+    setLoading(true);
+
+    const timer = setTimeout(() => {
+      router.push("/ReaderScreen");
+      setLoading(false);
+      clearTimeout(timer); // cleanup
+    }, 3100);
+  };
 
 
   return (
@@ -27,17 +40,22 @@ const WelcomeScreen = () => {
       <View style={styles.txtBox}>
         <Text style={styles.txt}>The Light of the Quran, Always With You!</Text>
         <TouchableOpacity
-          style={styles.btn}
-          onPress={() => router.push("/ReaderScreen")}
+          style={loading ? styles.dBtn : styles.btn}
+          onPress={handleStartReading}
+          disabled={loading ? true : false}
+        // onPress={() => router.push("/ReaderScreen")}
         >
           <Text style={styles.txtBtn}>
-            Bismillah{" "}
-            <Ionicons
-              name="book-outline"
-              size={24}
-              color="white"
-            // style={{ marginLeft: 50 }}
-            />
+            {loading ? (
+
+              <ActivityIndicator size="small" color="white" />
+            )
+              :
+              (
+                <>
+                  Bismillah{" "} <Ionicons name="book-outline" size={24} color="white" />
+                </>
+              )}
           </Text>
         </TouchableOpacity>
       </View>
@@ -107,6 +125,15 @@ const styles = StyleSheet.create({
     paddingVertical: "20",
     borderRadius: 15,
   },
+  dBtn: {
+    backgroundColor: "#d58eb0",
+    paddingHorizontal: 20,
+    paddingVertical: 24,
+    borderRadius: 15,
+    opacity: 0.7,
+
+  },
+
   txtBtn: {
     fontFamily: "Amiri",
     fontSize: 22,
