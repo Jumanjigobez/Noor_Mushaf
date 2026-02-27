@@ -11,7 +11,7 @@ const ReaderScreen = () => {
   // Pages sorted ascending [3 -> 606]
   const pageNumbers = Object.keys(pages)
     .map(Number)
-    .sort((a, b) => b - a);
+    .sort((a, b) => b - a); //Arrange in Mushaf Like when swiping
 
   // Start at Fatiha (page 3)
   const initialIndex = pageNumbers.indexOf(3);
@@ -29,7 +29,6 @@ const ReaderScreen = () => {
 
   return (
     <SafeAreaView style={styles.main}>
-      {/* Surah selector */}
       <View style={styles.searchContainer}>
         <Picker
           selectedValue={selectedSurah}
@@ -42,7 +41,6 @@ const ReaderScreen = () => {
         </Picker>
       </View>
 
-      {/* PagerView */}
       <PagerView
         ref={pagerRef}
         style={styles.pager}

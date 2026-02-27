@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-start",
     alignItems: "center",
-    flexGap: "2rem",
     backgroundColor: "#fafafa",
   },
   imgBox: {
@@ -92,7 +91,7 @@ const styles = StyleSheet.create({
     marginTop: "-30",
     display: "flex",
 
-    gap: 150,
+    gap: 100,
   },
   txt: {
     fontFamily: "Amiri",
@@ -120,7 +119,7 @@ const styles = StyleSheet.create({
     color: "white",
   },
   icon: {
-    paddingTop: "80%",
+    marginTop: 200,
     marginLeft: 50,
   },
 
@@ -129,7 +128,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    gap: 2,
+    gap: 1,
   },
 
   coderTxt: {
