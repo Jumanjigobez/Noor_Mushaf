@@ -16,7 +16,7 @@ const ReaderScreen = () => {
   // Start at Fatiha (page 3)
   const initialIndex = pageNumbers.indexOf(3);
 
-  const [selectedSurah, setSelectedSurah] = useState("Al-Fatiha");
+  const [selectedSurah, setSelectedSurah] = useState("1. Al-Fatiha");
 
   const handleSurahChange = (surahName) => {
     setSelectedSurah(surahName);
@@ -36,6 +36,7 @@ const ReaderScreen = () => {
           onValueChange={(itemValue) => handleSurahChange(itemValue)}
         >
           {Object.keys(surahToPage).map((surah) => (
+
             <Picker.Item key={surah} label={surah} value={surah} />
           ))}
         </Picker>
@@ -75,14 +76,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#fafafa",
   },
   searchContainer: {
-    padding: 8,
+    marginTop: "-10%",
+    padding: 10,
+    paddingVertical: 2,
     backgroundColor: "#eee",
   },
   picker: {
     height: 50,
     width: "100%",
+    zIndex: 100,
   },
   pager: {
+    marginTop: "-18%",
     width: "100%",
     height: "100%",
   },
