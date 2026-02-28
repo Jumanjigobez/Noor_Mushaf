@@ -1,27 +1,27 @@
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
-  const [loaded] = useFonts({
+  const [fontsLoaded] = useFonts({
     Amiri: require("../assets/fonts/Amiri-Regular.ttf"),
   });
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
+  // Hide splash as soon as first frame renders
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
     }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
+  }, [fontsLoaded]);
 
   return (
-    <Stack initialRouteName="WelcomeScreen">
+    <Stack
+      initialRouteName="WelcomeScreen"
+      onLayout={onLayoutRootView} // hide splash after first render
+    >
       <Stack.Screen name="WelcomeScreen" options={{ headerShown: false }} />
       <Stack.Screen name="ReaderScreen" options={{ title: "Noor Mushaf" }} />
       <Stack.Screen name="LoadingScreen" options={{ title: "Preparing..." }} />
