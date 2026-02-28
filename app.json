@@ -15,15 +15,8 @@
       "package": "com.juma.noormushaf",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/icon.png",
-        "backgroundColor": "#2596be"
-      },
-      "splash": {
-        "image": "./assets/images/splash-icon.png",
-        "resizeMode": "contain",
-        "backgroundColor": "#2596be"
-      },
-      "edgeToEdgeEnabled": false,
-      "predictiveBackGestureEnabled": false
+        "backgroundColor": "#ffffff"
+      }
     },
     "androidStatusBar": {
       "backgroundColor": "#2596be",
@@ -39,12 +32,9 @@
         "expo-splash-screen",
         {
           "image": "./assets/images/splash-icon.png",
-          "imageWidth": 250,
           "resizeMode": "contain",
-          "backgroundColor": "#2596be",
-          "dark": {
-            "backgroundColor": "#2596be"
-          }
+          "backgroundColor": "#ffffff",
+          "imageWidth": 150
         }
       ],
       "expo-asset",
@@ -53,6 +43,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "4fcfa4e4-a1f6-463e-8c8d-6d1c00d8aae1"
+      }
     }
   }
 }

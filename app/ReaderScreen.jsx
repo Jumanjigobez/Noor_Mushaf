@@ -1,13 +1,14 @@
 import { Picker } from "@react-native-picker/picker";
 import { useRef, useState } from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { ActivityIndicator, Image, StyleSheet, View } from "react-native";
 import PagerView from "react-native-pager-view";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { pages } from "../pages";
 import { surahToPage } from "../SurahPages";
 const ReaderScreen = () => {
   const pagerRef = useRef(null);
-
+  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const [loading, setLoading] = useState(false);
   // Pages sorted ascending [3 -> 606]
   const pageNumbers = Object.keys(pages)
     .map(Number)
@@ -19,12 +20,17 @@ const ReaderScreen = () => {
   const [selectedSurah, setSelectedSurah] = useState("1. Al-Fatiha");
 
   const handleSurahChange = (surahName) => {
+    setLoading(true);
     setSelectedSurah(surahName);
     const pageNum = surahToPage[surahName];
-    if (pageNum) {
-      const targetIndex = pageNumbers.indexOf(pageNum);
-      pagerRef.current?.setPage(targetIndex);
-    }
+
+    setTimeout(() => {
+      if (pageNum) {
+        const targetIndex = pageNumbers.indexOf(pageNum);
+        pagerRef.current?.setPage(targetIndex);
+      }
+      setLoading(false);
+    }, 3100);
   };
 
   return (
@@ -36,7 +42,6 @@ const ReaderScreen = () => {
           onValueChange={(itemValue) => handleSurahChange(itemValue)}
         >
           {Object.keys(surahToPage).map((surah) => (
-
             <Picker.Item key={surah} label={surah} value={surah} />
           ))}
         </Picker>
@@ -45,24 +50,35 @@ const ReaderScreen = () => {
       <PagerView
         ref={pagerRef}
         style={styles.pager}
+        offscreenPageLimit={2}
         initialPage={initialIndex}
-        orientation="horizontal"
-        onPageScroll={(e) => {
-          const position = e.nativeEvent.position;
-          // // Prevent swiping before Fatiha (index 0)
-          // if (position < initialIndex) {
-          //   pagerRef.current?.setPage(initialIndex);
-          // }
+        onPageSelected={(e) => {
+          setCurrentIndex(e.nativeEvent.position);
         }}
       >
-        {pageNumbers.map((num) => (
-          <Image
-            key={num}
-            source={pages[num]}
-            style={styles.image}
-            resizeMode="contain"
-          />
-        ))}
+        {pageNumbers.map((num, index) => {
+          if (Math.abs(index - currentIndex) > 2) {
+            return <View key={num} style={styles.image} />;
+          }
+
+          return (
+            <View key={num} style={styles.image}>
+              {loading ? (
+                <ActivityIndicator
+                  size="large"
+                  color="#2596be"
+                  style={styles.loader}
+                />
+              ) : (
+                <Image
+                  source={pages[num]}
+                  style={styles.image}
+                  resizeMode="contain"
+                />
+              )}
+            </View>
+          );
+        })}
       </PagerView>
     </SafeAreaView>
   );
@@ -94,5 +110,8 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: "100%",
+  },
+  loader: {
+    marginTop: "50%",
   },
 });
