@@ -8,7 +8,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -18,7 +18,7 @@ const WelcomeScreen = () => {
   const [loading, setLoading] = useState(false);
 
   const handleStartReading = () => {
-    if (loading) return; // prevent multiple triggers 
+    if (loading) return; // prevent multiple triggers
 
     // setLoading(true);
     // setTimeout(() => {
@@ -30,11 +30,12 @@ const WelcomeScreen = () => {
     router.push("/ReaderScreen");
   };
 
-  // Listen for navigation focus to reset loading 
+  // Listen for navigation focus to reset loading
   useEffect(() => {
     const unsubscribe = navigation.addListener("focus", () => {
-      setLoading(false); // re‑enable button once ReaderScreen is active 
-    }); return unsubscribe;
+      setLoading(false); // re‑enable button once ReaderScreen is active
+    });
+    return unsubscribe;
   }, [navigation]);
 
   return (
@@ -52,19 +53,17 @@ const WelcomeScreen = () => {
           style={loading ? styles.dBtn : styles.btn}
           onPress={handleStartReading}
           disabled={loading ? true : false}
-        // onPress={() => router.push("/ReaderScreen")}
+          // onPress={() => router.push("/ReaderScreen")}
         >
           <Text style={styles.txtBtn}>
             {loading ? (
-
               <ActivityIndicator size="small" color="white" />
-            )
-              :
-              (
-                <>
-                  Bismillah{" "} <Ionicons name="book-outline" size={24} color="white" />
-                </>
-              )}
+            ) : (
+              <>
+                Bismillah{" "}
+                <Ionicons name="book-outline" size={24} color="white" />
+              </>
+            )}
           </Text>
         </TouchableOpacity>
       </View>
@@ -75,14 +74,14 @@ const WelcomeScreen = () => {
           name="heart"
           size={16}
           color="#d58eb0"
-          style={{ marginHorizontal: 4, marginTop: 8 }}
+          style={{ marginHorizontal: 4, marginTop: 2 }}
         />
         <Text style={styles.coderTxt}>By</Text>
         <TouchableOpacity
           onPress={() =>
             Linking.openURL("https://jumanjigobez.github.io/personal_portfolio")
           }
-          style={{ marginTop: 5, marginLeft: 2 }}
+          style={{ marginTop: 1, marginLeft: 1 }}
         >
           <Text style={styles.coderLink}>Jumanji</Text>
         </TouchableOpacity>
@@ -113,17 +112,17 @@ const styles = StyleSheet.create({
 
   txtBox: {
     width: "90%",
-    marginTop: "-30",
+    marginTop: "-20",
     display: "flex",
 
     gap: 100,
   },
   txt: {
-    fontFamily: "Amiri",
+    // fontFamily: "Amiri",
     fontSize: 24,
     textAlign: "center",
     lineHeight: 45,
-    width: "80%",
+    width: "85%",
     alignSelf: "center",
     // backgroundColor: "red",
   },
@@ -140,11 +139,10 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
     borderRadius: 15,
     opacity: 0.7,
-
   },
 
   txtBtn: {
-    fontFamily: "Amiri",
+    // fontFamily: "Amiri",
     fontSize: 22,
     fontWeight: "bold",
     textTransform: "uppercase",
@@ -166,11 +164,11 @@ const styles = StyleSheet.create({
   },
 
   coderTxt: {
-    fontFamily: "Amiri",
+    // fontFamily: "Amiri",
     fontSize: 16,
   },
   coderLink: {
-    fontFamily: "Amiri",
+    // fontFamily: "Amiri",
     fontSize: 16,
     fontWeight: "bold",
     color: "#d58eb0",

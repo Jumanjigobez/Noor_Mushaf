@@ -2,12 +2,11 @@
   "expo": {
     "name": "Noor Mushaf",
     "slug": "noor-mushaf",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "noormushaf",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
     },
@@ -18,10 +17,7 @@
         "backgroundColor": "#ffffff"
       }
     },
-    "androidStatusBar": {
-      "backgroundColor": "#2596be",
-      "barStyle": "light-content"
-    },
+
     "web": {
       "output": "static",
       "favicon": "./assets/images/favicon.png"
