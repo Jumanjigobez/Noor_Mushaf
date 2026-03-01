@@ -4,6 +4,8 @@ The Light of the Quran - Always With You!
 
 Read the Quran. Pure. Offline. Without Distractions, Annoying Ads etc.
 
+[<img width="434" height="100" alt="coffee" src="https://github.com/user-attachments/assets/194df78b-87c8-4d5d-aa03-db71976cb3a7" />](https://buymeacoffee.com/jumanjidev)
+
 ## Download The APK V1.0.3
 [Download Now](https://tinyurl.com/Nmushaf1)
 
