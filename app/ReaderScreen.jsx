@@ -1,11 +1,25 @@
 import { Picker } from "@react-native-picker/picker";
 import { useRef, useState } from "react";
-import { ActivityIndicator, Image, StyleSheet, View } from "react-native";
+import {
+  ActivityIndicator,
+  Image,
+  StyleSheet,
+  View,
+  useColorScheme,
+} from "react-native";
 import PagerView from "react-native-pager-view";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { pages } from "../pages";
 import { surahToPage } from "../SurahPages";
+
+import { useKeepAwake } from "expo-keep-awake";
+
 const ReaderScreen = () => {
+  useKeepAwake();
+
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === "dark";
+
   const pagerRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [loading, setLoading] = useState(false);
@@ -38,7 +52,13 @@ const ReaderScreen = () => {
       <View style={styles.searchContainer}>
         <Picker
           selectedValue={selectedSurah}
-          style={styles.picker}
+          style={{
+            height: 50,
+            width: "100%",
+            zIndex: 100,
+            backgroundColor: isDark ? "#eee" : "#eee",
+            color: isDark ? "black" : "black",
+          }}
           onValueChange={(itemValue) => handleSurahChange(itemValue)}
         >
           {Object.keys(surahToPage).map((surah) => (
@@ -97,11 +117,7 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     backgroundColor: "#eee",
   },
-  picker: {
-    height: 50,
-    width: "100%",
-    zIndex: 100,
-  },
+
   pager: {
     marginTop: "-18%",
     width: "100%",
