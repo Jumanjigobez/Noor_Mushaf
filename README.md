@@ -4,7 +4,6 @@ The Light of the Quran - Always With You!
 
 Read the Quran. Pure. Offline. Without Distractions, Annoying Ads etc.
 
-[<img width="434" height="100" alt="coffee" src="https://github.com/user-attachments/assets/194df78b-87c8-4d5d-aa03-db71976cb3a7" />](https://buymeacoffee.com/jumanjidev)
 
 ## Download The APK V1.0.4
 [Download Now (V1.0.4)](https://tinyurl.com/Nmushaf2)
@@ -16,3 +15,5 @@ Read the Quran. Pure. Offline. Without Distractions, Annoying Ads etc.
 
 - Portfolio Webpage - [Juma Chaje](https://www.jumanjigobez.github.io)
 - Instagram - [@jumanjicasilas](https://www.instagram.com/jumanjigobez)
+
+[<img width="434" height="100" alt="coffee" src="https://github.com/user-attachments/assets/194df78b-87c8-4d5d-aa03-db71976cb3a7" />](https://buymeacoffee.com/jumanjidev)
